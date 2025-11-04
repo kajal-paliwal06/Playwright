@@ -7,7 +7,6 @@ import { RowDataPacket } from "mysql2";
 test("cafes Page", async ({ page }) => {
   const loginPageMosaic = new LoginPageMosaic(page);
   const cafeModule = new CafesPageMosaic(page);
-  const cafeModuleClick = new CafesPageMosaic(page);
 
   // Step 1: Login into Mosaic
   await loginPageMosaic.goto();
@@ -16,8 +15,9 @@ test("cafes Page", async ({ page }) => {
   // Add new cafe and verify all the fields
   await cafeModule.cafeModuleClick();
   await cafeModule.addNewCafe("New Newput Cafe 9");
+
   // 🕒 Access the EST time captured during creation
-  const estDate = cafeModuleClick.createdESTTime;
+  const estDate = cafeModule.createdESTTime;
   console.log("EST Time captured when creating café:", estDate);
   const cafeName = "New Newput Cafe 9";
 
