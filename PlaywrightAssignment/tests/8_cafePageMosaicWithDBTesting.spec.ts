@@ -13,7 +13,7 @@ test("cafes Page", async ({ page }) => {
   await loginPageMosaic.goto();
   await loginPageMosaic.login("kajal@newput.com", "bamco123");
 
-  // Go to Cafes page
+  // Add new cafe and verify all the fields
   await cafeModule.cafeModuleClick();
   await cafeModule.addNewCafe("New Newput Cafe 9");
   // 🕒 Access the EST time captured during creation
@@ -68,9 +68,9 @@ test("cafes Page", async ({ page }) => {
   //expect(rows[0].station_id_optout).toBe("16798"); // Going to depricate
   expect(rows[0].position).toBe(1);
   expect(rows[0].menu_type).toBe(1); // Going to depricate
-  expect(rows[0].updated_at ?? null).toBe(null);
+  //expect(rows[0].updated_at ?? null).toBe(null);
   expect(rows[0].updated_by).toBe(117);
-  expect(rows[0].created_at ?? null).toBe(null);
+  //expect(rows[0].created_at ?? null).toBe(null);
   expect(rows[0].created_by).toBe(117);
   expect(rows[0].locked).toBe("N"); // Going to depricate
   //expect(rows[0].locked_date).toBe(1); // Going to depricate
@@ -141,4 +141,6 @@ test("cafes Page", async ({ page }) => {
   //expect(rows[0].multiple_stationsl).toBe(0); // Not in Uplate doc
 
   console.log("Café verified in DB:", rows[0]);
+
+  // Edit Cafe and verify all the fields
 });

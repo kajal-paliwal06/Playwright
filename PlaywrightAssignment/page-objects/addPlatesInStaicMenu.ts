@@ -5,6 +5,28 @@ export class AddStaticMenuPlates {
     this.page = page;
   }
 
+  // Method to wait for loader to disappear
+  async waitForLoaderToDisappear() {
+    const loader = this.page.locator("#loadingplate");
+
+    // Wait until the loader is hidden, invisible, or not blocking clicks
+    await this.page.waitForFunction(
+      () => {
+        const el = document.querySelector("#loadingplate");
+        if (!el) return true; // removed from DOM
+        const style = window.getComputedStyle(el);
+        const isHidden =
+          style.display === "none" ||
+          style.visibility === "hidden" ||
+          style.opacity === "0" ||
+          style.pointerEvents === "none";
+
+        return isHidden;
+      },
+      { timeout: 15000 }
+    );
+  }
+
   // Add Static Entree in static menu
 
   // Clicks on the "+" icon to add a new static menu plate
@@ -54,24 +76,23 @@ export class AddStaticMenuPlates {
         hasText: recipe.staicEntreeCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
+      await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.staicEntreeSubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
+      await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.staicEntreeItemNames) {
         const item = this.page.locator(`span.hover:has-text("${itemName}")`);
         await item.waitFor({ state: "visible", timeout: 10000 });
         await item.scrollIntoViewIfNeeded();
+        await this.waitForLoaderToDisappear();
         await item.click();
       }
-
-      // Collapse category and subcategory after adding items
-      await subcatArrow.click();
-      await categoryArrow.click();
     }
 
     // Selects the meal type "Breakfast"
@@ -116,18 +137,18 @@ export class AddStaticMenuPlates {
   async scrollToLightBlueDiv() {
     console.log("Waiting for plate save and page to load...");
 
-    // 1️⃣ Wait for loader to disappear if visible
+    // Wait for loader to disappear if visible
     const loader = this.page.locator(".modal-loading2");
     if (await loader.isVisible()) {
       console.log("Loader visible, waiting for it to disappear...");
       await loader.waitFor({ state: "hidden", timeout: 30000 });
     }
 
-    // 2️⃣ Wait for navigation (if triggered by save)
+    // Wait for navigation (if triggered by save)
     await this.page.waitForLoadState("networkidle", { timeout: 30000 });
     console.log("Page load complete, searching for light blue div...");
 
-    // 3️⃣ Wait for the light blue div to appear
+    // Wait for the light blue div to appear
     const lightBlueSection = this.page.locator(
       'div[style*="background-color: lightblue;"][id^="station-superplate-"]'
     );
@@ -181,24 +202,23 @@ export class AddStaticMenuPlates {
         hasText: recipe.barCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
+      await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.barsubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
+      await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.barItemNames) {
         const item = this.page.locator(`span.hover:has-text("${itemName}")`);
         await item.waitFor({ state: "visible", timeout: 10000 });
         await item.scrollIntoViewIfNeeded();
+        await this.waitForLoaderToDisappear();
         await item.click();
       }
-
-      // Collapse category and subcategory after adding items
-      await subcatArrow.click();
-      await categoryArrow.click();
     }
 
     // Selects the meal type "Breakfast"
@@ -222,6 +242,7 @@ export class AddStaticMenuPlates {
     await saveButton.waitFor({ state: "visible", timeout: 10000 });
     await saveButton.scrollIntoViewIfNeeded();
     await saveButton.click();
+    await this.page.waitForTimeout(10000);
   }
 
   // Click the BYO option
@@ -252,13 +273,13 @@ export class AddStaticMenuPlates {
           .catch(() => false);
 
         if (uiLoaded) {
-          console.log("✅ UI loaded successfully after clicking BYO!");
+          console.log("UI loaded successfully after clicking BYO!");
           return;
         } else {
-          console.log("⚠️ UI not loaded yet. Retrying click...");
+          console.log("UI not loaded yet. Retrying click...");
         }
       } catch (err) {
-        console.log(`❌ Attempt ${attempt} failed: ${err}`);
+        console.log(`Attempt ${attempt} failed: ${err}`);
       }
 
       // Small delay before next try
@@ -266,7 +287,7 @@ export class AddStaticMenuPlates {
     }
 
     throw new Error(
-      "❌ Failed to load UI after clicking Build Your Own (Guest Options)"
+      "Failed to load UI after clicking Build Your Own (Guest Options)"
     );
   }
 
@@ -323,24 +344,23 @@ export class AddStaticMenuPlates {
         hasText: recipe.byoCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
+      //await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.byosubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
+      //await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.byoItemNames) {
         const item = this.page.locator(`span.hover:has-text("${itemName}")`);
         await item.waitFor({ state: "visible", timeout: 10000 });
         await item.scrollIntoViewIfNeeded();
+        await this.waitForLoaderToDisappear();
         await item.click();
       }
-
-      // Collapse category and subcategory after adding items
-      await subcatArrow.click();
-      await categoryArrow.click();
     }
 
     // Selects the meal type "Lunch"
@@ -438,24 +458,23 @@ export class AddStaticMenuPlates {
         hasText: recipe.byoCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
+      //await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.byosubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
+      //await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.byoItemNames) {
         const item = this.page.locator(`span.hover:has-text("${itemName}")`);
         await item.waitFor({ state: "visible", timeout: 10000 });
         await item.scrollIntoViewIfNeeded();
+        await this.waitForLoaderToDisappear();
         await item.click();
       }
-
-      // Collapse category and subcategory after adding items
-      await subcatArrow.click();
-      await categoryArrow.click();
     }
 
     // Selects the meal type "Lunch"

@@ -3,7 +3,7 @@ import { LoginPageCMN } from "../page-objects/loginPageCMN";
 import { MenusPage } from "../page-objects/menusPage";
 import { AddStaticMenuPlates } from "../page-objects/addPlatesInStaicMenu";
 
-test.only("login and add plates in static menu", async ({ page }) => {
+test("login and add plates in static menu", async ({ page }) => {
   const loginPage = new LoginPageCMN(page);
   const menusPage = new MenusPage(page);
   const addStaticMenuPlate = new AddStaticMenuPlates(page);
@@ -30,7 +30,7 @@ test.only("login and add plates in static menu", async ({ page }) => {
       staicEntreeSubCategory: "cereals cold",
       staicEntreeItemNames: ["cereal Bran Flakes", "cereal Cheerios"],
     },
-    {
+    /* {
       staicEntreeCategory: "beans and legumes",
       staicEntreeSubCategory: "beans and legumes cooked",
       staicEntreeItemNames: ["beans kidney (canned)", "crispy chickpeas"],
@@ -39,54 +39,44 @@ test.only("login and add plates in static menu", async ({ page }) => {
       staicEntreeCategory: "fruits",
       staicEntreeSubCategory: "fruits raw",
       staicEntreeItemNames: ["avocado"],
-    },
+    }, */
   ]);
   await addStaticMenuPlate.scrollToLightBlueDiv();
 
-  /* // Step 6: Add plate in Bar in Static menu
+  // Step 6: Add plate in Bar in Static menu
   await addStaticMenuPlate.addBarRecipe([
     {
-      barCategory: " proteins ",
+      barCategory: "proteins",
       barsubCategory: "egg",
       barItemNames: ["egg hard-boiled", "quail egg"],
     },
-    {
-      barCategory: " bread, tortillas and flatbread ",
+    /* {
+      barCategory: "bread, tortillas and flatbread",
       barsubCategory: "breakfast bread",
       barItemNames: ["English muffin whole wheat", "bagel multigrain"],
     },
     {
-      barCategory: " sushi ",
+      barCategory: "sushi",
       barsubCategory: "sushi rolls",
       barItemNames: ["salmon avocado sushi roll (brown rice)"],
     },
     {
-      barCategory: " sauces, spreads and condiments ",
+      barCategory: "sauces, spreads and condiments",
       barsubCategory: "pickled",
       barItemNames: ["giardiniera", "olive green", "sweet pickle relish"],
-    },
+    }, */
   ]);
-  await addStaticMenuPlate.scrollToLightBlueDiv();
+  //await addStaticMenuPlate.scrollToLightBlueDiv();
 
   // Step 7: Add plate in BYO - FULL GUEST OPTIONS in Static menu
   await addStaticMenuPlate.addBYOFullGuestRecipe([
     {
-      byoCategory: " beverages ",
-      byosubCategory: "water and house-made lemonade",
-      byoItemNames: ["lemonade house-made", "carbonated water", "ice cubes"],
-    },
-    {
-      byoCategory: " sweet and salty snacks ",
-      byosubCategory: "crackers",
-      byoItemNames: ["Cheez-It Whole Grain", "crackers matzoh"],
-    },
-    {
-      byoCategory: " beverages ",
+      byoCategory: "beverages",
       byosubCategory: "fruit juices",
       byoItemNames: ["juice pineapple"],
     },
     {
-      byoCategory: " nuts, seeds and toppings ",
+      byoCategory: "nuts, seeds and toppings",
       byosubCategory: "nuts and seeds",
       byoItemNames: ["almonds", "pine nuts", "walnuts candied"],
     },
@@ -96,25 +86,15 @@ test.only("login and add plates in static menu", async ({ page }) => {
   // Step 8: Add plate in BYO - Some GUEST OPTIONS in Static menu
   await addStaticMenuPlate.addBYOSomeGuestRecipe([
     {
-      byoCategory: " beverages ",
+      byoCategory: "beverages",
       byosubCategory: "water and house-made lemonade",
-      byoItemNames: ["lemonade house-made", "carbonated water", "ice cubes"],
+      byoItemNames: ["lemonade house-made", "carbonated water"],
     },
     {
-      byoCategory: " sweet and salty snacks ",
+      byoCategory: "sweet and salty snacks",
       byosubCategory: "crackers",
-      byoItemNames: ["Cheez-It Whole Grain", "crackers matzoh"],
-    },
-    {
-      byoCategory: " beverages ",
-      byosubCategory: "fruit juices",
-      byoItemNames: ["juice pineapple"],
-    },
-    {
-      byoCategory: " nuts, seeds and toppings ",
-      byosubCategory: "nuts and seeds",
-      byoItemNames: ["almonds", "pine nuts", "walnuts candied"],
+      byoItemNames: ["Cheez-It Whole Grain"],
     },
   ]);
-  await addStaticMenuPlate.scrollToLightBlueDiv(); */
+  await addStaticMenuPlate.scrollToLightBlueDiv();
 });

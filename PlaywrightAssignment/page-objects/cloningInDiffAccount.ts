@@ -102,7 +102,7 @@ export class CloningInDiffAccount {
     // Log start of the station-level cloning operation
     console.log("Clone at station level in different account and cafe");
     const cloneStationIcon = this.page.locator(
-      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][id^="clone-station-${stationId}"]`
+      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][data-station_id="${stationId}"]`
     );
     await cloneStationIcon.waitFor({ state: "visible", timeout: 10000 });
     await cloneStationIcon.click();

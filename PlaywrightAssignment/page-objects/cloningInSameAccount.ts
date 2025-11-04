@@ -173,7 +173,7 @@ export class CloningInSameAccount {
     );
 
     const cloneStationIcon = this.page.locator(
-      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][id^="clone-station-${stationId}"]`
+      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][data-station_id="${stationId}"]`
     );
     await cloneStationIcon.waitFor({ state: "visible", timeout: 10000 });
     await cloneStationIcon.click();
@@ -344,9 +344,8 @@ export class CloningInSameAccount {
     console.log(
       "Clone at station level in same account, campus but in different cafe"
     );
-    console.log("Starting clone for station:", stationId);
     const cloneStationIcon = this.page.locator(
-      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][id^="clone-station-${stationId}"]`
+      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][data-station_id="${stationId}"]`
     );
 
     await this.page.waitForLoadState("networkidle");
@@ -485,7 +484,7 @@ export class CloningInSameAccount {
       "Clone at station level in same account but in different campus and cafe"
     );
     const cloneStationIcon = this.page.locator(
-      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][id^="clone-station-${stationId}"]`
+      `img.clone-station-anchor.imagedropshadow[title="Clone station's weekly menu"][data-station_id="${stationId}"]`
     );
     await this.page.waitForLoadState("networkidle");
     await cloneStationIcon.waitFor({ state: "visible", timeout: 15000 });

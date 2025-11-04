@@ -3,7 +3,9 @@ import { LoginPageCMN } from "../page-objects/loginPageCMN";
 import { MenusPage } from "../page-objects/menusPage";
 import { CloningInDiffAccount } from "../page-objects/cloningInDiffAccount";
 
-test("login and clone the items into different account", async ({ page }) => {
+test.only("login and clone the items into different account", async ({
+  page,
+}) => {
   const loginPage = new LoginPageCMN(page);
   const menusPage = new MenusPage(page);
   const cloningInDiffAccount = new CloningInDiffAccount(page);
@@ -27,15 +29,15 @@ test("login and clone the items into different account", async ({ page }) => {
     "Newput Test Account",
     "Cafe 1",
     "Chinese",
-    "2025-10-27"
+    "2025-11-03"
   );
 
   // Case 2: Cloning at station level in different account and cafe
   await cloningInDiffAccount.cloneAtStationLevelInDiffAccAddCafe(
-    "569025:2025-10-27:27139",
+    "27139",
     "Newput Test Account",
     "Cafe 1",
     "Chinese",
-    "2025-10-27"
+    "2025-11-03"
   );
 });
