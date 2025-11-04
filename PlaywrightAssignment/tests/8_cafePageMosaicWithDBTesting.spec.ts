@@ -141,6 +141,4 @@ test("cafes Page", async ({ page }) => {
   //expect(rows[0].multiple_stationsl).toBe(0); // Not in Uplate doc
 
   console.log("Café verified in DB:", rows[0]);
-
-  // Edit Cafe and verify all the fields
 });

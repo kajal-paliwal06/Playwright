@@ -80,38 +80,11 @@ export class CafesPageMosaic {
     console.log("Clicked on the Save button");
     await this.page.waitForTimeout(5000);
 
+    // Close the cafe page
     const closeButton = this.page.locator('img[src*="buttons/close.jpg"]');
     await closeButton.waitFor({ state: "visible", timeout: 10000 });
     await closeButton.scrollIntoViewIfNeeded();
     await closeButton.click();
     console.log("Clicked on Close button successfully");
   }
-
-  async searchCafe() {
-    const nameInput = this.page.locator('input[name="name"][autofocus]');
-    await nameInput.waitFor({ state: "visible", timeout: 10000 });
-    await nameInput.scrollIntoViewIfNeeded();
-    await nameInput.fill("Newput");
-    console.log('Filled "Newput" in the Name input field');
-
-    const refineButton = this.page.locator(
-      'input[type="image"][src*="refine.gif"][alt="Refine Results"]'
-    );
-    await refineButton.waitFor({ state: "visible", timeout: 10000 });
-    await refineButton.scrollIntoViewIfNeeded();
-    await refineButton.click();
-    console.log("Clicked on the Refine Results button successfully");
-
-    const newputCafeLink = this.page.locator(
-      'a[href*="/manager/cafes/edit/"][href$="1464641"]',
-      {
-        hasText: "New Newput Cafe",
-      }
-    );
-    await newputCafeLink.waitFor({ state: "visible", timeout: 10000 });
-    await newputCafeLink.scrollIntoViewIfNeeded();
-    await newputCafeLink.click();
-    console.log("Clicked on 'New Newput Cafe' link successfully");
-  }
-  async editCafe() {}
 }
