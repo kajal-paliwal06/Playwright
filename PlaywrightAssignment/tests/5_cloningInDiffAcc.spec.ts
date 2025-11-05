@@ -3,9 +3,7 @@ import { LoginPageCMN } from "../page-objects/loginPageCMN";
 import { MenusPage } from "../page-objects/menusPage";
 import { CloningInDiffAccount } from "../page-objects/cloningInDiffAccount";
 
-test.only("login and clone the items into different account", async ({
-  page,
-}) => {
+test("login and clone the items into different account", async ({ page }) => {
   const loginPage = new LoginPageCMN(page);
   const menusPage = new MenusPage(page);
   const cloningInDiffAccount = new CloningInDiffAccount(page);

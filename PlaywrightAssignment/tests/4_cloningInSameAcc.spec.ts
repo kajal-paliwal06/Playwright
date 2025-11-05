@@ -3,7 +3,7 @@ import { LoginPageCMN } from "../page-objects/loginPageCMN";
 import { MenusPage } from "../page-objects/menusPage";
 import { CloningInSameAccount } from "../page-objects/cloningInSameAccount";
 
-test.only("login and clone the items into same account", async ({ page }) => {
+test("login and clone the items into same account", async ({ page }) => {
   const loginPage = new LoginPageCMN(page);
   const menusPage = new MenusPage(page);
   const cloningInSameAccount = new CloningInSameAccount(page);

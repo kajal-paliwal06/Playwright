@@ -3,7 +3,7 @@ import { LoginPageCMN } from "../page-objects/loginPageCMN";
 import { MenusPage } from "../page-objects/menusPage";
 import { AddPlatePage } from "../page-objects/addPlatesInSpecialMenu";
 
-test.only("login and add special plate", async ({ page }) => {
+test("login and add special plate", async ({ page }) => {
   const loginPage = new LoginPageCMN(page);
   const menusPage = new MenusPage(page);
   const addPlatePage = new AddPlatePage(page);
