@@ -30,16 +30,6 @@ test("login and add plates in static menu", async ({ page }) => {
       staicEntreeSubCategory: "cereals cold",
       staicEntreeItemNames: ["cereal Bran Flakes", "cereal Cheerios"],
     },
-    /* {
-      staicEntreeCategory: "beans and legumes",
-      staicEntreeSubCategory: "beans and legumes cooked",
-      staicEntreeItemNames: ["beans kidney (canned)", "crispy chickpeas"],
-    },
-    {
-      staicEntreeCategory: "fruits",
-      staicEntreeSubCategory: "fruits raw",
-      staicEntreeItemNames: ["avocado"],
-    }, */
   ]);
   await addStaticMenuPlate.scrollToLightBlueDiv();
 
@@ -50,23 +40,12 @@ test("login and add plates in static menu", async ({ page }) => {
       barsubCategory: "egg",
       barItemNames: ["egg hard-boiled", "quail egg"],
     },
-    /* {
+    {
       barCategory: "bread, tortillas and flatbread",
       barsubCategory: "breakfast bread",
       barItemNames: ["English muffin whole wheat", "bagel multigrain"],
     },
-    {
-      barCategory: "sushi",
-      barsubCategory: "sushi rolls",
-      barItemNames: ["salmon avocado sushi roll (brown rice)"],
-    },
-    {
-      barCategory: "sauces, spreads and condiments",
-      barsubCategory: "pickled",
-      barItemNames: ["giardiniera", "olive green", "sweet pickle relish"],
-    }, */
   ]);
-  //await addStaticMenuPlate.scrollToLightBlueDiv();
 
   // Step 7: Add plate in BYO - FULL GUEST OPTIONS in Static menu
   await addStaticMenuPlate.addBYOFullGuestRecipe([

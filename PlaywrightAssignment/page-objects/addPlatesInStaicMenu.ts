@@ -8,7 +8,6 @@ export class AddStaticMenuPlates {
   // Method to wait for loader to disappear
   async waitForLoaderToDisappear() {
     const loader = this.page.locator("#loadingplate");
-
     // Wait until the loader is hidden, invisible, or not blocking clicks
     await this.page.waitForFunction(
       () => {
@@ -20,13 +19,11 @@ export class AddStaticMenuPlates {
           style.visibility === "hidden" ||
           style.opacity === "0" ||
           style.pointerEvents === "none";
-
         return isHidden;
       },
       { timeout: 15000 }
     );
   }
-
   // Add Static Entree in static menu
 
   // Clicks on the "+" icon to add a new static menu plate
@@ -221,11 +218,11 @@ export class AddStaticMenuPlates {
       }
     }
 
-    // Selects the meal type "Breakfast"
-    const breakfastLabel = this.page.locator("label.button.grey", {
+    // Selects the meal type "Brunch"
+    const brunchLabel = this.page.locator("label.button.grey", {
       hasText: "Brunch",
     });
-    await breakfastLabel.click();
+    await brunchLabel.click();
 
     // Fills the plate name
     const plateNameField = this.page.locator(
@@ -344,14 +341,12 @@ export class AddStaticMenuPlates {
         hasText: recipe.byoCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
-      //await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.byosubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
-      //await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.byoItemNames) {
@@ -364,10 +359,10 @@ export class AddStaticMenuPlates {
     }
 
     // Selects the meal type "Lunch"
-    const breakfastLabel = this.page.locator("label.button.grey", {
+    const lunchLabel = this.page.locator("label.button.grey", {
       hasText: "Lunch",
     });
-    await breakfastLabel.click();
+    await lunchLabel.click();
 
     // Fills the plate name
     const nameInput = this.page.locator('input[name="no-recipe-item-name"]');
@@ -458,14 +453,12 @@ export class AddStaticMenuPlates {
         hasText: recipe.byoCategory,
       });
       await categoryArrow.waitFor({ state: "visible", timeout: 10000 });
-      //await this.waitForLoaderToDisappear();
       await categoryArrow.click();
 
       const subcatArrow = this.page.locator(
         `h4.panel-title:has-text("${recipe.byosubCategory}") i.arrow-ss`
       );
       await subcatArrow.waitFor({ state: "visible", timeout: 10000 });
-      //await this.waitForLoaderToDisappear();
       await subcatArrow.click();
 
       for (const itemName of recipe.byoItemNames) {
@@ -477,11 +470,11 @@ export class AddStaticMenuPlates {
       }
     }
 
-    // Selects the meal type "Lunch"
-    const breakfastLabel = this.page.locator("label.button.grey", {
+    // Selects the meal type "Dinner"
+    const dinnerLabel = this.page.locator("label.button.grey", {
       hasText: "Dinner",
     });
-    await breakfastLabel.click();
+    await dinnerLabel.click();
 
     // Selects the sub station
     const subStationDropdown = this.page.locator(

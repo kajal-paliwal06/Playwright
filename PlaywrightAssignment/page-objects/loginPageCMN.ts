@@ -15,7 +15,7 @@ export class LoginPageCMN {
   }
 
   async enterUsername(employeeNum: string) {
-    const employeeNumber = await this.page.locator('input[name="emanresu"]');
+    const employeeNumber = this.page.locator('input[name="emanresu"]');
 
     await employeeNumber.waitFor({ state: "visible", timeout: 15000 });
     await employeeNumber.fill(employeeNum);

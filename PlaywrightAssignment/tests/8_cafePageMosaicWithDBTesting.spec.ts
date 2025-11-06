@@ -14,12 +14,12 @@ test("cafes Page", async ({ page }) => {
 
   // Add new cafe and verify all the fields
   await cafeModule.cafeModuleClick();
-  await cafeModule.addNewCafe("New Newput Cafe 9");
+  await cafeModule.addNewCafe("New Newput Cafe 11");
 
   // 🕒 Access the EST time captured during creation
   const estDate = cafeModule.createdESTTime;
   console.log("EST Time captured when creating café:", estDate);
-  const cafeName = "New Newput Cafe 9";
+  const cafeName = "New Newput Cafe 11";
 
   // Connect Cafebonappetit DB and fetch new created cafe
   const connection = await getDBConnection();
